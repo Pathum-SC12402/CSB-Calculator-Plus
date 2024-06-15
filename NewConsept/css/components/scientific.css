@@ -1,0 +1,56 @@
+.scientific-calculator .calculator {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.scientific-calculator h2 {
+    grid-column: span 5;
+    text-align: center;
+}
+
+.calculator input {
+    grid-column: span 5;
+    height: 50px;
+    text-align: right;
+    font-size: 24px;
+    padding: 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    background-color: var(--input-bg);
+    color: var(--input-text);
+}
+
+.calculator button {
+    height: 50px;
+    font-size: 18px;
+    background: var(--button-bg);
+    border: 1px solid var(--button-border);
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--button-text);
+}
+
+.calculator button:hover {
+    background: var(--button-hover-bg);
+}
+
+/* Light mode variables */
+body.light-mode {
+    --input-border: #ccc;
+    --input-bg: #fff;
+    --input-text: #000;
+    --button-bg: #f0f0f0;
+    --button-border: #ccc;
+    --button-text: #000;
+    --button-hover-bg: #e0e0e0;
+}
+
+/* Dark mode variables */
+body.dark-mode {
+    --input-border: #555;
+    --input-bg: #333;
+    --input-text: #fff;
+    --button-bg: #444;
+    --button-border: #555;
+    --button-text: #fff;
+    --button-hover-bg: #555;
+}
