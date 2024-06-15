@@ -1,0 +1,25 @@
+.unit-converter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.unit-converter select, .unit-converter input, .unit-converter button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.unit-converter button {
+    cursor: pointer;
+    background-color: #123456;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.unit-converter button:hover {
+    background-color: #0a1931;
+}
