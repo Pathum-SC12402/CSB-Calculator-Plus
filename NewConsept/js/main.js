@@ -7,8 +7,13 @@ document.getElementById('menu-toggle').addEventListener('click', function() {
     }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    loadConverter('base');
+});
+
 document.getElementById('standard-btn').addEventListener('click', () => loadCalculator('standard'));
 document.getElementById('scientific-btn').addEventListener('click', () => loadCalculator('scientific'));
+document.getElementById('programmer-btn').addEventListener('click', () => loadCalculator('programmer'));
 document.getElementById('converter-btn').addEventListener('click', () => loadCalculator('converter'));
 document.getElementById('integration-btn').addEventListener('click', () => loadCalculator('integration'));
 document.getElementById('derivation-btn').addEventListener('click', () => loadCalculator('derivation'));

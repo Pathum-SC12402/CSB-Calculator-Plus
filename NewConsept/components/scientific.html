@@ -1,30 +1,53 @@
 <div class="scientific-calculator calculator">
-    <h2>Scientific Calculator</h2>
+    <div class="calculator-header">
+        <h2>Scientific Calculator</h2>
+        <span id="history-toggle" class="history-icon">🕒</span>
+    </div>
     <input type="text" id="display" disabled>
-    <button onclick="clearDisplay()">C</button>
-    <button onclick="deleteLast()">DEL</button>
-    <button onclick="appendCharacter('/')">/</button>
-    <button onclick="appendCharacter('*')">*</button>
-    <button onclick="appendCharacter('7')">7</button>
-    <button onclick="appendCharacter('8')">8</button>
-    <button onclick="appendCharacter('9')">9</button>
-    <button onclick="appendCharacter('-')">-</button>
-    <button onclick="appendCharacter('4')">4</button>
-    <button onclick="appendCharacter('5')">5</button>
-    <button onclick="appendCharacter('6')">6</button>
-    <button onclick="appendCharacter('+')">+</button>
-    <button onclick="appendCharacter('1')">1</button>
-    <button onclick="appendCharacter('2')">2</button>
-    <button onclick="appendCharacter('3')">3</button>
-    <button onclick="calculateResult()">=</button>
-    <button onclick="appendCharacter('0')">0</button>
-    <button onclick="appendCharacter('.')">.</button>
-    <button onclick="appendCharacter('(')">(</button>
-    <button onclick="appendCharacter(')')">)</button>
+    <button onclick="clearDisplay()" id="ac">CE</button>
+    <button onclick="deleteLast()" id="del">DEL</button>
+    <button onclick="appendCharacter('(')" class="bracketButton">(</button>
+    <button onclick="appendCharacter(')')" class="bracketButton">)</button>
+    <button onclick="appendCharacter('/')" class="operationButton" data-button-symbol="/">/</button>
+    <button onclick="appendCharacter('7')" class="numberButton">7</button>
+    <button onclick="appendCharacter('8')" class="numberButton">8</button>
+    <button onclick="appendCharacter('9')" class="numberButton">9</button>
+    <button onclick="appendCharacter('*')" class="operationButton" data-button-symbol="*">*</button>
+    <button onclick="appendCharacter('4')" class="numberButton">4</button>
+    <button onclick="appendCharacter('5')" class="numberButton">5</button>
+    <button onclick="appendCharacter('6')" class="numberButton">6</button>
+    <button onclick="appendCharacter('-')" class="operationButton" data-button-symbol="-">-</button>
+    <button onclick="appendCharacter('1')" class="numberButton">1</button>
+    <button onclick="appendCharacter('2')" class="numberButton">2</button>
+    <button onclick="appendCharacter('3')" class="numberButton">3</button>
+    <button onclick="appendCharacter('+')" class="operationButton" data-button-symbol="+">+</button>
+    <button onclick="calculateResult()" id="equalBut">=</button>
+    <button onclick="appendCharacter('0')" class="numberButton">0</button>
+    <button onclick="appendCharacter('.')" class="numberButton">.</button>
+    <button onclick="calculatePercentage()">%</button>
+    <button onclick="togglePlusMinus()">+/-</button>
     <button onclick="appendCharacter('sin(')">sin</button>
     <button onclick="appendCharacter('cos(')">cos</button>
     <button onclick="appendCharacter('tan(')">tan</button>
+    <button onclick="appendCharacter('asin(')">sin-1</button>
+    <button onclick="appendCharacter('acos(')">cos-1</button>
+    <button onclick="appendCharacter('atan(')">tan-1</button>
+    <button onclick="appendCharacter('Math.PI')">π</button>
+    <button onclick="appendCharacter('sqrt(')" id="sqrtBut">√</button>
     <button onclick="appendCharacter('log(')">log</button>
-    <button onclick="appendCharacter('sqrt(')">√</button>
-    <button onclick="appendCharacter('pow(')">^</button>
+    <button onclick="appendCharacter('ln(')">ln</button>
+    <button onclick="appendCharacter('exp(')">e^</button>
+    <button onclick="appendCharacter('Math.pow(')" id="powerButton">^</button>
+    <div class="degree-radian-toggle">
+        <button class="toggle-btn inactive-btn" id="deg-btn" onclick="setDegreeMode()">Deg</button>
+        <button class="toggle-btn active-btn" id="rad-btn" onclick="setRadianMode()">Rad</button>
+    </div>
+    <button onclick="memoryClear()">MC</button>
+    <button onclick="memoryRecall()">MR</button>
+    <button onclick="memoryAdd()">M+</button>
+    <button onclick="memorySubtract()">M-</button>
+</div>
+<div id="history" class="history">
+    <h3>Calculation History</h3>
+    <ul id="history-list"></ul>
 </div>
