@@ -1,10 +1,25 @@
-.scientific-calculator .calculator {
+.calculator {
+    display: grid;
     grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
 }
 
-.scientific-calculator h2 {
+.calculator-header {
     grid-column: span 5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calculator h2 {
     text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.history-icon {
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .calculator input {
@@ -31,6 +46,47 @@
 
 .calculator button:hover {
     background: var(--button-hover-bg);
+}
+
+.degree-radian-toggle {
+    display: flex;
+    flex-direction: column;
+}
+
+.degree-radian-toggle .toggle-btn {
+    height: 23px;
+    margin: 2px 0;
+    font-size: 12px;
+}
+
+.degree-radian-toggle .active-btn {
+    background-color: #4CAF50; /* Green for active */
+    color: white;
+}
+
+/* History styles */
+.history {
+    display: none;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.history h3 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.history ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.history ul li {
+    padding: 5px;
+    border-bottom: 1px solid var(--input-border);
 }
 
 /* Light mode variables */
