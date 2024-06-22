@@ -7,7 +7,7 @@ function updateButtons(base) {
     const allButtons = document.querySelectorAll('.calculator button');
     allButtons.forEach(btn => {
         const val = btn.getAttribute('data-value');
-        if (val === 'CE' || val === 'DEL') return; // Always enable C and DEL buttons
+        if (val === 'CE' || val === 'DEL') return; // Always enable CE and DEL buttons
 
         if ((base === '2' && parseInt(val, 10) > 1) ||
             (base === '8' && parseInt(val, 10) > 7) ||
@@ -60,7 +60,7 @@ function calculateInBase(expression, base) {
     parts.forEach(part => {
         if (['+', '-', '*', '/'].includes(part)) {
             currentOperation = part;
-        } else {
+        } else if (part !== '') {  // Ensure part is not an empty string
             let number = convertBaseToDecimal(part, base);
             switch (currentOperation) {
                 case '+': result += number; break;
@@ -106,7 +106,21 @@ function formatOutputForBase(value, base) {
     return `${baseInteger}.${baseFraction}`;
 }
 
-//History of the Answers in Decimal Number System
+function togglePlusMinus() {
+    const display = document.getElementById('display');
+    if (display.value === '') return; // Do nothing if display is empty
+
+    const base = parseInt(document.getElementById('base-select').value, 10);
+    const decimalValue = convertBaseToDecimal(display.value, base);
+
+    // Toggle the sign
+    const toggledValue = -decimalValue;
+
+    // Convert back to the appropriate base
+    display.value = formatOutputForBase(toggledValue, base);
+}
+
+// History of the Answers in Decimal Number System
 
 function updateHistory(entry) {
     const historyList = document.getElementById('history-list');
