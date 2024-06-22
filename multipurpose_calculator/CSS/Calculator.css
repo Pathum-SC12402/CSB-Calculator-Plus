@@ -1,0 +1,106 @@
+.calculator {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.calculator-header {
+    grid-column: span 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+}
+
+.calculator h2 {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1; /* Ensure it takes available space */
+}
+
+.history-icon {
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    right: 0; 
+}
+
+.calculator input {
+    grid-column: span 4;
+    height: 50px;
+    text-align: right;
+    font-size: 24px;
+    padding: 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    background-color: var(--input-bg);
+    color: var(--input-text);
+}
+
+.calculator button {
+    height: 50px;
+    font-size: 18px;
+    background: var(--button-bg);
+    border: 1px solid var(--button-border);
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--button-text);
+}
+
+.calculator button:hover {
+    background: var(--button-hover-bg);
+}
+
+/* History styles */
+.history {
+    display: none;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    grid-column: span 4;
+}
+
+.history h3 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.history ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.history ul li {
+    padding: 5px;
+    border-bottom: 1px solid var(--input-border);
+    cursor: pointer;
+}
+
+.history ul li:hover{
+    background: var(--button-hover-bg);
+}
+
+/* Light mode variables */
+body.light-mode {
+    --input-border: #ccc;
+    --input-bg: #fff;
+    --input-text: #000;
+    --button-bg: #f0f0f0;
+    --button-border: #ccc;
+    --button-text: #000;
+    --button-hover-bg: #e0e0e0;
+}
+
+/* Dark mode variables */
+body.dark-mode {
+    --input-border: #555;
+    --input-bg: #333;
+    --input-text: #fff;
+    --button-bg: #444;
+    --button-border: #555;
+    --button-text: #fff;
+    --button-hover-bg: #555;
+}
