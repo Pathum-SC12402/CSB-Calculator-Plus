@@ -12,3 +12,9 @@ function calculateDerivation() {
         document.getElementById('result').innerHTML = 'Error: Invalid expression';
     }
 }
+
+let btnClear = document.getElementById('clear');
+btnClear.addEventListener('click', () => {
+    input.value = '';
+    result.innerText = '';
+})
