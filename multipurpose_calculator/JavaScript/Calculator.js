@@ -1,11 +1,6 @@
 var showHistory = false;
 const history = new Array();
 
-// Load the default content
-document.addEventListener('DOMContentLoaded', () => {
-    loadContent('standard.html');
-});
-
 //update the expression
 function appendCharacter(val){
     document.getElementById('expression').value += val;
@@ -23,28 +18,6 @@ function deleteLast(){
 function calculatePercentage(){
     let expression = document.getElementById('expression').value;
     document.getElementById('expression').value = expression / 100;
-}
-
-document.getElementById('dropDownMenu').addEventListener('change', function() {
-    if(document.getElementById('dropDownMenu').value == "advance"){
-        loadContent('advance.html');
-    }else if(document.getElementById('dropDownMenu').value == "standard"){
-        loadContent('standard.html');
-    };
-});
-//load the content of the page
-function loadContent(url) {
-    fetch(url)
-        .then(response => response.text())
-        .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, "text/html");
-            // Assuming each of these pages only has one main div with content.
-            const newContent = doc.querySelector('#cal').innerHTML;
-            document.getElementById('default').innerHTML = newContent;
-
-        })
-        .catch(err => console.error('Failed to load the page:',err));
 }
 
 //evaluate the expression
