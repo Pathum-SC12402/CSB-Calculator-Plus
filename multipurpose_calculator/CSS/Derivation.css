@@ -1,25 +1,27 @@
-.derivationCalculator {
+.derivation {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 100px 50px;
     gap: 10px;
-}
-
-.derivationCalculator input, .derivationCalculator button {
+  }
+  
+  .derivation input, .derivation button {
     width: 100%;
     padding: 10px;
     font-size: 16px;
     margin-bottom: 10px;
-}
-
-.derivationCalculator button {
+  }
+  
+  .derivation button {
     cursor: pointer;
     background-color: #123456;
     color: white;
     border: none;
     border-radius: 5px;
-}
-
-.derivationCalculator button:hover {
+  }
+  
+  .derivation button:hover {
     background-color: #0a1931;
-}
+  }
+  
