@@ -4,8 +4,8 @@ function calculateDerivation() {
 
     try {
         //compute the derivative with respect to 'x' //
-        result = math.derivative(input, 'x').toString();
-        document.getElementById('result').innerText = `Result: ${result}`;
+        answer = math.derivative(input, 'x').toString();
+        document.getElementById('result').innerText = `Answer: ${answer}`;
     } catch (error) {
         // handle errors if input is invalid //
         console.error('Error calculating derivative:', error);
