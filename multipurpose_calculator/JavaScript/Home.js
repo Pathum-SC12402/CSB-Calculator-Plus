@@ -7,44 +7,53 @@ document.getElementById('dropbtn').addEventListener('click', function() {
     }
 });
 
+// Hide menu when clicking outside
+document.addEventListener('click', function(event) {
+    var menu = document.getElementById('menu');
+    var menuToggle = document.getElementById('menu-toggle');
+    if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+        menu.style.display = 'none';
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Load the saved theme
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+});
+
 document.getElementById('home-btn').addEventListener('click', function() {
     window.location.href='Home.html';
 });
 
 document.getElementById('calculator-btn').addEventListener('click', function() {
     loadContent('Calculator');
-    this.onclick(document.getElementById('home-header').innerHTML="Calculator",
-    document.getElementById('dropdown-content').style.display='none');
+    this.onclick(document.getElementById('dropdown-content').style.display='none');
 });
 
 document.getElementById('scientific-btn').addEventListener('click', function() {
     loadContent('Scientific');
-    this.onclick(document.getElementById('home-header').innerHTML="Scientific",
-    document.getElementById('dropdown-content').style.display='none');
+    this.onclick(document.getElementById('dropdown-content').style.display='none');
 });
 
 document.getElementById('integration-btn').addEventListener('click', function() {
     loadContent('Integration');
-    this.onclick(document.getElementById('home-header').innerHTML="Integration",
-    document.getElementById('dropdown-content').style.display='none');
+    this.onclick(document.getElementById('dropdown-content').style.display='none');
 });
 
 document.getElementById('derivation-btn').addEventListener('click', function() {
     loadContent('Derivation');
-    this.onclick(document.getElementById('home-header').innerHTML="Derivation",
-    document.getElementById('dropdown-content').style.display='none');
+    this.onclick(document.getElementById('dropdown-content').style.display='none');
 });
 
 document.getElementById('geometry-btn').addEventListener('click', function() {
     loadContent('Geometry');
-    this.onclick(document.getElementById('home-header').innerHTML="Deometric",
-    document.getElementById('dropdown-content').style.display='none');
+    this.onclick(document.getElementById('dropdown-content').style.display='none');
 });
 
 document.getElementById('converter-btn').addEventListener('click', function() {
     loadContent('Convertor');
-    this.onclick(document.getElementById('home-header').innerHTML="Converter",
-    document.getElementById('dropdown-content').style.display='none');
+    this.onclick(document.getElementById('dropdown-content').style.display='none');
 });
 
 function loadContent(type) {
@@ -69,4 +78,40 @@ function loadJS(src) {
     const script = document.createElement('script');
     script.src = src;
     document.body.appendChild(script);
+}
+
+const modeToggle = document.getElementById('mode-toggle');
+const logo = document.getElementById('logo');
+const footerLogo = document.getElementById('footer-logo');
+
+
+modeToggle.addEventListener('click', function() {
+    if (document.body.classList.contains('dark-mode')) {
+        setTheme('light');
+    } else {
+        setTheme('dark');
+    }
+});
+
+function setTheme(theme) {
+    document.body.classList.remove('dark-mode', 'light-mode');
+    document.body.classList.add(`${theme}-mode`);
+
+    if (theme === 'dark') {
+        modeToggle.textContent = '☀️';
+        logo.src = '/multipurpose_calculator/Source/Images/logo-white.webp';
+        footerLogo.src = '/multipurpose_calculator/Source/Images/logo-white.webp';
+    } else {
+        modeToggle.textContent = '🌙';
+        logo.src = '/multipurpose_calculator/Source/Images/logo.webp';
+        footerLogo.src = '/multipurpose_calculator/Source/Images/logo.webp';
+    }
+
+    // Save the theme to localStorage
+    localStorage.setItem('theme', theme);
+}
+
+// Set default mode to light if not set                     
+if (!localStorage.getItem('theme')) {                            // THIS CODE NOT WORKING
+    setTheme('light');
 }

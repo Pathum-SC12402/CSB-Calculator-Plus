@@ -1,0 +1,12 @@
+.integration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 50px;
+    gap: 10px;
+  }
+
+  .integration h1 {
+    padding: 10px;
+    margin-bottom: 50px;
+  }
