@@ -1,6 +1,12 @@
-<div class="derivation-calculator">
-    <h2>Derivation Calculator</h2>
-    <input type="text" id="derivation-input" placeholder="Enter function">
-    <button onclick="calculateDerivation()">Calculate</button>
-    <p id="derivation-result"></p>
+<div class="derivative-calculator">
+    <h2>Derivation Calculator</h2><br>
+    <input type="text" class="input" id="function-input" placeholder="Enter Function:">
+    <input type="text" class="input" id="base-input" placeholder="Enter Variable (e.g., x, 2x, etc.):">
+    <input type="number" class="input" id="order-input" placeholder="Order of Derivative (e.g., 1, 2, 3, ...)" min="1">
+    <br>
+    <button onclick="calculateDerivation()">Calculate Derivative</button>
+    <button id="clear">Clear</button>
+    <br>
+    <p class="result" id="result"></p>
+    <div id="plot"></div>
 </div>

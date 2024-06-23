@@ -27,8 +27,9 @@ document.getElementById('standard-btn').addEventListener('click', () => loadCalc
 document.getElementById('scientific-btn').addEventListener('click', () => loadCalculator('scientific'));
 document.getElementById('programmer-btn').addEventListener('click', () => loadCalculator('programmer'));
 document.getElementById('converter-btn').addEventListener('click', () => loadCalculator('converter'));
-document.getElementById('integration-btn').addEventListener('click', () => loadCalculator('integration'));
 document.getElementById('derivation-btn').addEventListener('click', () => loadCalculator('derivation'));
+document.getElementById('integration-btn').addEventListener('click', () => loadCalculator('integration'));
+document.getElementById('geometry-btn').addEventListener('click', () => loadCalculator('geometry'));
 
 function loadCalculator(type) {
     fetch(`components/${type}.html`)
@@ -36,8 +37,16 @@ function loadCalculator(type) {
         .then(html => {
             document.getElementById('content-area').innerHTML = html;
             loadCSS(`css/components/${type}.css`);
-            loadJS(`js/components/${type}.js`);
 
+            if (type === 'derivation' || type === 'integration' || type === 'geometry') {
+                loadJS([
+                    'https://cdn.jsdelivr.net/npm/mathjs@10.0.0/lib/browser/math.min.js',
+                    'https://cdn.plot.ly/plotly-latest.min.js',
+                    `js/components/${type}.js`
+                ]);
+            } else {
+                loadJS([`js/components/${type}.js`]);
+            }
         })
         .catch(err => console.error('Failed to load calculator: ', err));
 }
@@ -49,10 +58,12 @@ function loadCSS(href) {
     document.head.appendChild(link);
 }
 
-function loadJS(src) {
-    const script = document.createElement('script');
-    script.src = src;
-    document.body.appendChild(script);
+function loadJS(scripts) {
+    scripts.forEach(src => {
+        const script = document.createElement('script');
+        script.src = src;
+        document.body.appendChild(script);
+    });
 }
 
 const modeToggle = document.getElementById('mode-toggle');
@@ -83,6 +94,11 @@ function setTheme(theme) {
 
     // Save the theme to localStorage
     localStorage.setItem('theme', theme);
+
+    // Update the plot theme if a plot exists
+    if (document.getElementById('plot')) {
+        updatePlotTheme();
+    }
 }
 
 // Set default mode to light if not set
