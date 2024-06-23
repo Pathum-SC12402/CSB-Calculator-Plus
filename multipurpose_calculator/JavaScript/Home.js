@@ -42,7 +42,7 @@ document.getElementById('geometry-btn').addEventListener('click', function() {
 });
 
 document.getElementById('converter-btn').addEventListener('click', function() {
-    loadContent('Convertor');
+    loadContent('Converter');
     this.onclick(document.getElementById('home-header').innerHTML="Converter",
     document.getElementById('dropdown-content').style.display='none');
 });
