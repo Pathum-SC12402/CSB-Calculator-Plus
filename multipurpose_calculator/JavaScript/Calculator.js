@@ -4,15 +4,19 @@ const history = new Array();
 //update the expression
 function appendCharacter(val){
     document.getElementById('expression').value += val;
+    document.getElementById('whole-expression').value += val;
 }
 
 function clearDisplay(){
     document.getElementById('expression').value = '';
+    document.getElementById('whole-expression').value = '';
 }
 
 function deleteLast(){
     let expression = document.getElementById('expression').value;
     document.getElementById('expression').value = expression.slice(0, -1);
+    let wholeExpression = document.getElementById('whole-expression').value;
+    document.getElementById('whole-expression').value = wholeExpression.slice(0, -1);
 }
 
 function calculatePercentage(){
@@ -30,6 +34,7 @@ function Evaluate() {
         try{
             const result = eval(expression);
             document.getElementById("expression").value = result;
+            document.getElementById('whole-expression').value += ')';
             if(expression != result){
                 updateHistory(expression + '=' + result);  
             }
@@ -46,13 +51,13 @@ function updateHistory(element){
         history.push(element);
         var content = '';
         history.forEach((element, index) => {
-            content += `<li key="${index}" onClick="${() => this.fetchHistory(index)}">${element}</li>`;
+            content += `<li key="${index}" onClick="${() => fetchHistory(index)}">${element}</li>`;
         });
         document.getElementById('history-list').innerHTML = content;
     }
     
 }
-
+//show history of calculations
 function toggleHistory(){
     showHistory = !showHistory;
     if(showHistory)

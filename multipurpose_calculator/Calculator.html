@@ -1,8 +1,9 @@
-<div id="calculator">
+<div id="calculator" class="calculator">
     <div class="calculator-header">
         <h2>Standard Calculator</h2>
         <span id="history-toggle" class="history-icon" onclick="toggleHistory()">🕒</span>
     </div>
+    <input type="text" id="whole-expression" disabled>
     <input type="text" id="expression" disabled>
     <button onclick="clearDisplay()">CE</button>
     <button onclick="deleteLast()">DEL</button>
