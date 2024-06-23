@@ -4,34 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSB Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="CSS/Home.css">
 </head>
 <body>
-    <div class="top">
-        <div class="dropdown">
-            <button class="dropbtn">Menu</button>
-            <div class="dropdown-content">
-                <a href="#" id="home-btn">Home</a>
-                <a href="#" id="calculator-btn">Calculator</a>
-                <a href="#" id="scientific-btn">Scientific</a>
-                <a href="#" id="integration-btn">Integration</a>
-                <a href="#" id="derivation-btn">Derivation</a>
-                <a href="#" id="geometry-btn">Geometry</a>
-                <a href="#" id="converter-btn">Unit Converter</a>
-            </div>
+    <div class="top" id="top">
+        <img src="Source/Images/logo.webp" alt="CSB Logo" class="logo" id="logo">
+
+        <div class="dropdown-content" id="dropdown-content">
+            <a href="" id="home-btn">Home</a>
+            <a href="#Calculator" id="calculator-btn">Calculator</a>
+            <a href="#Scientific" id="scientific-btn">Scientific</a>
+            <a href="#Integration" id="integration-btn">Integration</a>
+            <a href="#Derivation" id="derivation-btn">Derivation</a>
+            <a href="#Geometry" id="geometry-btn">Geometry</a>
+            <a href="#Unit_Converter" id="converter-btn">Unit Converter</a>
         </div>
-        <div class="logo">
-            <img src="Source/Images/logo.jpg" width="50px" alt="CSB Logo">
+
+        <div class="top-right">
+            <button class="dropbtn" id="dropbtn"><i class="fa-solid fa-bars"></i> Menu</button>
         </div>
     </div>
     <header class="main-header" id="home-header">
         CSB Calculator
     </header>
     <main class="main-content" id="home-content">
-        <div class="cover">
-            <img src="Source/Images/cover.jpeg" class="background-img" alt="CSB Development Cover">
-            <div class="overlay-text">CSB DEVELOPMENT</div>
-        </div>
+        <img src="Source/Images/calculator.webp" class="background-img" alt="CSB Development Cover">
+        <div class="overlay-text">CSB DEVELOPMENT</div>
+        <script></script>
     </main>
     <footer class="footer-content">
         <p class="footer-element">University Of Ruhuna</p>
@@ -40,5 +40,6 @@
     </footer>
 
     <script src="JavaScript/Home.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.1/math.min.js"></script>
 </body>
 </html>
