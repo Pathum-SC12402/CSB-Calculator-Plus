@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    loadConverter(null);
+    loadConverter('base');
 });
 
-function loadConverter(defaultType) {
+function loadConverter(defaultType = null) {
     const converterType = defaultType || document.getElementById('converter-type').value;
     const fieldsContainer = document.getElementById('converter-fields');
     fieldsContainer.innerHTML = '';
@@ -129,58 +129,9 @@ function loadConverter(defaultType) {
             document.getElementById('base-units-from').addEventListener('change', handleCustomBase);
             document.getElementById('base-units-to').addEventListener('change', handleCustomBase);
             break;
-        case 'time':
-            fieldsContainer.innerHTML = `
-                <center><h3>Time Converter</h3></center><br>
-                <input type="number" id="time-input" placeholder="Enter value">
-                <select id="time-units-from">
-                    <option value="sec">Seconds</option>
-                    <option value="min">Minutes</option>
-                    <option value="hour">Hours</option>
-                    <option value="day">Days</option>
-                    <option value="week">Weeks</option>
-                    <option value="year">Years</option>
-                </select>
-                <div class="arrow">⬇</div>
-                <select id="time-units-to">
-                    <option value="sec">Seconds</option>
-                    <option value="min">Minutes</option>
-                    <option value="hour">Hours</option>
-                    <option value="day">Days</option>
-                    <option value="week">Weeks</option>
-                    <option value="year">Years</option>
-                </select>
-                <button onclick="convertTime()">Convert</button>
-                <p id="time-result"></p>
-            `;
-            break;
         default:
             fieldsContainer.innerHTML = '<p>Please select a converter type.</p>';
     }
-}
-function convertTime(){
-    const input=parseInt(document.getElementById("time-input").value);
-    const unitFrom=document.getElementById("time-units-from").value;
-    const unitTo=document.getElementById("time-units-to").value;
-
-    let result;
-
-    const conversionFactors = {
-        sec: 31536000,
-        min: 525600,
-        hour: 8760,
-        day: 365,
-        week: 48,
-        year: 1,
-    };
-
-    // Convert input to hours first
-    const valueInyear = input / conversionFactors[unitFrom];
-
-    // Convert from hours to the target unit
-    result = valueInyear * conversionFactors[unitTo];
-
-    document.getElementById('time-result').innerHTML = `Result: ${result} ${unitTo}`;
 }
 
 function handleCustomBase() {
@@ -238,7 +189,7 @@ function convertLength() {
     // Convert from meters to the target unit
     result = valueInMeters * conversionFactors[unitTo];
 
-    document.getElementById('time-result').innerHTML = `Result: ${result} ${unitTo.toUpperCase()}`;
+    document.getElementById('length-result').innerHTML = `Result: ${result} ${unitTo.toUpperCase()}`;
 }
 
 function convertMass() {

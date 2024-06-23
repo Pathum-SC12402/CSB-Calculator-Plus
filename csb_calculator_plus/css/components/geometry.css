@@ -1,16 +1,4 @@
-:root {
-    --converter-bg: #fff;
-    --converter-text: #000;
-    --input-bg: #fff;
-    --input-text: #000;
-    --input-border: #ccc;
-    --button-bg: #f0f0f0;
-    --button-border: #ccc;
-    --button-text: #000;
-    --button-hover-bg: #e0e0e0;
-}
-
-.unit-converter {
+.geometry-calculator {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,11 +8,11 @@
     border-radius: 10px;
     background-color: var(--converter-bg);
     color: var(--converter-text);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme change */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.unit-converter select,.unit-converter input,.unit-converter button {
+.geometry-calculator select, .geometry-calculator input, .geometry-calculator button {
     width: calc(100% - 20px);
     padding: 10px;
     font-size: 16px;
@@ -35,16 +23,24 @@
     color: var(--input-text);
 }
 
-.unit-converter button {
+.geometry-calculator button {
     cursor: pointer;
     background-color: var(--button-bg);
     color: var(--button-text);
-    border: 1px solid var(--button-border);
+    border: none;
     border-radius: 5px;
 }
 
-.unit-converter button:hover {
+.geometry-calculator button:hover {
     background-color: var(--button-hover-bg);
+}
+
+#shape-canvas {
+    width: 500px;
+    height: 300px; /* Keep the previous height */
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    margin: 0 auto; /* Center the canvas */
 }
 
 /* Light Mode Theme */
@@ -55,7 +51,6 @@ body.light-mode {
     --input-text: #000;
     --input-border: #ccc;
     --button-bg: #f0f0f0;
-    --button-border: #ccc;
     --button-text: #000;
     --button-hover-bg: #e0e0e0;
 }
@@ -68,16 +63,6 @@ body.dark-mode {
     --input-text: #fff;
     --input-border: #555;
     --button-bg: #444;
-    --button-border: #555;
     --button-text: #fff;
     --button-hover-bg: #555;
-}
-
-/* Ensure arrow icon suits both themes */
-.unit-converter .arrow {
-    font-size: 24px;
-    margin: 0 10px;
-    display: flex;
-    align-items: center;
-    color: var(--converter-text); /* Adjust color based on theme*/
 }
