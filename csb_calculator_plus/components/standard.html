@@ -1,10 +1,9 @@
-<div id="calculator" class="calculator">
+<div class="calculator">
     <div class="calculator-header">
         <h2>Standard Calculator</h2>
-        <span id="history-toggle" class="history-icon" onclick="toggleHistory()">🕒</span>
+        <span id="history-toggle" class="history-icon">🕒</span>
     </div>
-    <input type="text" id="whole-expression" disabled>
-    <input type="text" id="expression" disabled>
+    <input type="text" id="display" disabled>
     <button onclick="clearDisplay()">CE</button>
     <button onclick="deleteLast()">DEL</button>
     <button onclick="calculatePercentage()">%</button>
@@ -24,9 +23,9 @@
     <button onclick="appendCharacter('0')">0</button>
     <button onclick="appendCharacter('.')">.</button>
     <button onclick="togglePlusMinus()">+/-</button>
-    <button onclick="Evaluate()">=</button>
-    <div id="history" class="history">
-        <h3>Calculation History</h3>
-        <ul id="history-list"></ul>
-    </div>
+    <button onclick="calculateResult()">=</button>
+</div>
+<div id="history" class="history">
+    <h3>Calculation History</h3>
+    <ul id="history-list"></ul>
 </div>
