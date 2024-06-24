@@ -20,8 +20,8 @@ body.dark-mode {
     color: #ccc;
 }
 
-.top{
-    display: flex; 
+.navbar {
+    display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--navbar-bg);
@@ -30,92 +30,59 @@ body.dark-mode {
     z-index: 1;
 }
 
-.dropbtn, .mode-toggle {
-    margin-left: 10px;
-    background: none;
-    color: white;
-    font-size: 24px;
-    border: none;
-    cursor: pointer;
+.menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    border-radius: 5px;
+    width: 150px;
+    z-index: 2;
+    background-color: var(--menu-bg);
+    color: var(--menu-text);
 }
 
-.top-right {
+.menu a {
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    color: var(--menu-text);
+}
+
+.menu a:hover {
+    background-color: var(--menu-hover-bg);
+}
+
+.navbar-right {
     display: flex;
     align-items: center;
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    background-color: var(--menu-bg);
-    top: 60px;
-    right: 10px;
-    width: 150px;
-    border-radius: 5px;
-    z-index: 2;
-    text-align: center;
-    color: var(--menu-text);
-}
-
-.dropdown-content a {
-    color: var(--menu-text);
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: var(--menu-hover-bg);
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #262826;
-}
-
-.main-content{
-    min-height: 75vh;
-}
-
-.main-header{
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    color: var(--header-text);
-    font-weight: bold;
-    background-color: var(--header-bg);
+.menu-toggle, .mode-toggle {
+    background: none;
+    border: none;
+    color: white;
     font-size: 24px;
-}
-
-.background-img {
-    width: 100%;
-    height: 75vh;
-    object-fit: cover;
-}
-
-.overlay-text {
-    position: absolute;
-    top: 40%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    color: var(--header-bg);
-    font-size: 44px;
-    font-weight: bold;
-    text-align: center;
-    z-index: 1;
+    cursor: pointer;
+    margin-left: 10px;
 }
 
 .logo, .footer-logo {
-    height: 50px;
+    height: 60px;
+}
+
+.main-header {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    font-size: 24px;
+}
+
+.main-content {
+    padding: 20px;
+    min-height: 75vh;
 }
 
 .footer-content {
@@ -179,5 +146,33 @@ body.dark-mode {
     --footer-bg: #222;
     --menu-bg: #1a1a2e;
     --menu-text: #ffffff;
-    --menu-hover-bg: #605d5d;
+    --menu-hover-bg: #16213e;
+}
+
+/* Additional CSS for calculator components */
+.calculator, .scientific-calculator, .unit-converter, .integration-calculator, .derivation-calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.calculator input, .scientific-calculator input, .unit-converter input, .integration-calculator input, .derivation-calculator input,
+.calculator button, .scientific-calculator button, .unit-converter button, .integration-calculator button, .derivation-calculator button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.calculator button, .scientific-calculator button, .unit-converter button, .integration-calculator button, .derivation-calculator button {
+    cursor: pointer;
+    background-color: #123456;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.calculator button:hover, .scientific-calculator button:hover, .unit-converter button:hover, .integration-calculator button:hover, .derivation-calculator button:hover {
+    background-color: #0a1931;
 }
