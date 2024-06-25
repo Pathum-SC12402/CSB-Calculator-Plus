@@ -1,5 +1,6 @@
 const history = new Array();
 
+
 function clearDisplay() {
     document.getElementById('display').value = '';
 }
@@ -8,11 +9,13 @@ function deleteLast() {
     const display = document.getElementById('display');
     display.value = display.value.slice(0, -1);
 }
+
 //update the expression
 function appendCharacter(char) {
     const display = document.getElementById('display');
     display.value += char;
 }
+
 //evaluate the expression
 function calculateResult() {
     const display = document.getElementById('display');
@@ -48,6 +51,7 @@ function togglePlusMinus() {
         display.value = '-' + display.value;
     }
 }
+
 //show history of calculations
 function toggleHistory() {
     const historyElement = document.getElementById('history');
