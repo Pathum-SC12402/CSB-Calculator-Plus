@@ -1,0 +1,178 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+body.light-mode {
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #ccc;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--navbar-bg);
+    padding: 10px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    border-radius: 5px;
+    width: 150px;
+    z-index: 2;
+    background-color: var(--menu-bg);
+    color: var(--menu-text);
+}
+
+.menu a {
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    color: var(--menu-text);
+}
+
+.menu a:hover {
+    background-color: var(--menu-hover-bg);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.menu-toggle, .mode-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.logo, .footer-logo {
+    height: 60px;
+}
+
+.main-header {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    font-size: 24px;
+}
+
+.main-content {
+    padding: 20px;
+    min-height: 75vh;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--footer-bg);
+    color: #ffffff;
+    text-align: center;
+}
+
+.footer-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.footer-link-item {
+    display: flex;
+    align-items: center;
+}
+
+.footer-link-item i {
+    margin-right: 8px;
+}
+
+.footer-links a {
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+.footer-center p {
+    margin-top: 10px;
+}
+
+/* Light mode variables */
+body.light-mode {
+    --navbar-bg: #123456;
+    --header-bg: #0a1931;
+    --header-text: #ffffff;
+    --footer-bg: #16213e;
+    --menu-bg: #ffffff;
+    --menu-text: #000000;
+    --menu-hover-bg: #f0f0f0;
+}
+
+/* Dark mode variables */
+body.dark-mode {
+    --navbar-bg: #333;
+    --header-bg: #444;
+    --header-text: #eee;
+    --footer-bg: #222;
+    --menu-bg: #1a1a2e;
+    --menu-text: #ffffff;
+    --menu-hover-bg: #16213e;
+}
+
+/* Additional CSS for calculator components */
+.calculator, .scientific-calculator, .unit-converter, .integration-calculator, .derivation-calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.calculator input, .scientific-calculator input, .unit-converter input, .integration-calculator input, .derivation-calculator input,
+.calculator button, .scientific-calculator button, .unit-converter button, .integration-calculator button, .derivation-calculator button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.calculator button, .scientific-calculator button, .unit-converter button, .integration-calculator button, .derivation-calculator button {
+    cursor: pointer;
+    background-color: #123456;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.calculator button:hover, .scientific-calculator button:hover, .unit-converter button:hover, .integration-calculator button:hover, .derivation-calculator button:hover {
+    background-color: #0a1931;
+}
