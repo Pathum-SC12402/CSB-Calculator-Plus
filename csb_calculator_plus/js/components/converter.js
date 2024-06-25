@@ -196,6 +196,10 @@ function convertLength() {
     const unitTo = document.getElementById('length-units-to').value;
     let result;
 
+    if (isNaN(input)) {
+        document.getElementById('length-result').value = "Please input a value";
+        return;
+    }
     // Conversion factors relative to meters
     const conversionFactors = {
         m: 1,
@@ -223,6 +227,11 @@ function convertMass() {
     const unitTo = document.getElementById('mass-units-to').value;
     let result;
 
+    if (isNaN(input)) {
+        document.getElementById('mass-result').value = "Please input a value";
+        return;
+    }
+
     // Conversion factors relative to kilograms
     const conversionFactors = {
         kg: 1,
@@ -249,6 +258,10 @@ function convertTemperature() {
     const unitTo = document.getElementById('temperature-units-to').value;
     let result;
 
+    if (isNaN(input)) {
+        document.getElementById('temperature-result').value = "Please input a value";
+        return;
+    }
     // Conversion logic for temperature
     if (unitFrom === 'c' && unitTo === 'f') {
         result = (input * 9/5) + 32;
@@ -274,6 +287,11 @@ function convertAngle() {
     const unitFrom = document.getElementById('angle-units-from').value;
     const unitTo = document.getElementById('angle-units-to').value;
     let result;
+
+    if (isNaN(input)) {
+        document.getElementById('angle-result').value = "Please input a value";
+        return;
+    }
 
     // Conversion logic for angle
     if (unitFrom === 'deg' && unitTo === 'rad') {
@@ -301,6 +319,11 @@ function convertBase() {
     const unitTo = document.getElementById('base-units-to').value;
     const customBaseFrom = parseInt(document.getElementById('custom-base-from').value);
     const customBaseTo = parseInt(document.getElementById('custom-base-to').value);
+
+    if (input.trim() === '') {
+        document.getElementById('base-result').value = "Please input a valid number";
+        return;
+    }
 
     let baseFromValue = getBaseValue(unitFrom);
     let baseToValue = getBaseValue(unitTo);
@@ -380,6 +403,11 @@ function convertTime(){
 
     let result;
 
+    if (isNaN(input)) {
+        document.getElementById('time-result').value = "Please input a value";
+        return;
+    }
+    
     const conversionFactors = {
         second: 31536000,
         minute: 525600,
