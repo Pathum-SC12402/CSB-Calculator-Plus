@@ -34,7 +34,7 @@ function loadConverter(defaultType = null) {
                     <option value="mi">Miles</option>
                 </select>
                 <button onclick="convertLength()">Convert</button>
-                <p id="length-result"></p>
+                <p>Result: <input class="result" id="length-result" type="text" placeholder="Answer"></p>
             `;
             break;
         case 'mass':
@@ -61,7 +61,7 @@ function loadConverter(defaultType = null) {
                     <option value="t">Metric Tons</option>
                 </select>
                 <button onclick="convertMass()">Convert</button>
-                <p id="mass-result"></p>
+                <p>Result: <input class="result" id="mass-result" type="text" placeholder="Answer"></p>
             `;
             break;
         case 'temperature':
@@ -80,7 +80,7 @@ function loadConverter(defaultType = null) {
                     <option value="k">Kelvin</option>
                 </select>
                 <button onclick="convertTemperature()">Convert</button>
-                <p id="temperature-result"></p>
+                <p>Result: <input class="result" id="temperature-result" type="text" placeholder="Answer"></p>
             `;
             break;
         case 'angle':
@@ -99,7 +99,7 @@ function loadConverter(defaultType = null) {
                     <option value="grad">Gradians</option>
                 </select>
                 <button onclick="convertAngle()">Convert</button>
-                <p id="angle-result"></p>
+                <p>Result: <input class="result" id="angle-result" type="text" placeholder="Answer"></p>
             `;
             break;
         case 'base':
@@ -124,10 +124,35 @@ function loadConverter(defaultType = null) {
                 </select>
                 <input type="number" id="custom-base-to" placeholder="Enter custom base (if selected)" style="display:none;" min="2" max="36">
                 <button onclick="convertBase()">Convert</button>
-                <p id="base-result"></p>
+                <p>Result: <input class="result" id="base-result" type="text" placeholder="Answer"></p>
             `;
             document.getElementById('base-units-from').addEventListener('change', handleCustomBase);
             document.getElementById('base-units-to').addEventListener('change', handleCustomBase);
+            break;
+        case 'time':
+            fieldsContainer.innerHTML = `
+                <center><h3>Time Converter</h3></center><br>
+                <input type="number" id="time-input" placeholder="Enter value">
+                <select id="time-units-from">
+                    <option value="second">Seconds</option>
+                    <option value="minute">Minutes</option>
+                    <option value="hour">Hours</option>
+                    <option value="day">Days</option>
+                    <option value="week">Weeks</option>
+                    <option value="year">Years</option>
+                </select>
+                <div class="arrow">⬇</div>
+                <select id="time-units-to">
+                    <option value="second">Seconds</option>
+                    <option value="minute">Minutes</option>
+                    <option value="hour">Hours</option>
+                    <option value="day">Days</option>
+                    <option value="week">Weeks</option>
+                    <option value="year">Years</option>
+                </select>
+                <button onclick="convertTime()">Convert</button>
+                <p>Result: <input class="result" id="time-result" type="text" placeholder="Answer"></p>
+            `;
             break;
         default:
             fieldsContainer.innerHTML = '<p>Please select a converter type.</p>';
@@ -189,7 +214,7 @@ function convertLength() {
     // Convert from meters to the target unit
     result = valueInMeters * conversionFactors[unitTo];
 
-    document.getElementById('length-result').innerHTML = `Result: ${result} ${unitTo.toUpperCase()}`;
+    document.getElementById('length-result').value = `${result.toFixed(5)} ${unitTo.toUpperCase()}`;
 }
 
 function convertMass() {
@@ -215,7 +240,7 @@ function convertMass() {
     // Convert from kilograms to the target unit
     result = valueInKilograms * conversionFactors[unitTo];
 
-    document.getElementById('mass-result').innerHTML = `Result: ${result} ${unitTo.toUpperCase()}`;
+    document.getElementById('mass-result').value = `${result.toFixed(5)} ${unitTo.toUpperCase()}`;
 }
 
 function convertTemperature() {
@@ -241,7 +266,7 @@ function convertTemperature() {
         result = input; // When converting between the same units
     }
 
-    document.getElementById('temperature-result').innerHTML = `Result: ${result} °${unitTo.toUpperCase()}`;
+    document.getElementById('temperature-result').value = `${result.toFixed(5)} °${unitTo.toUpperCase()}`;
 }
 
 function convertAngle() {
@@ -267,7 +292,7 @@ function convertAngle() {
         result = input; // When converting between the same units
     }
 
-    document.getElementById('angle-result').innerHTML = `Result: ${result} ${unitTo.toUpperCase()}`;
+    document.getElementById('angle-result').value = `${result.toFixed(5)} ${unitTo.toUpperCase()}`;
 }
 
 function convertBase() {
@@ -345,5 +370,35 @@ function convertBase() {
         return;
     }
 
-    document.getElementById('base-result').innerHTML = `Result: ${result}<sub>${baseToValue}</sub>`;
+    document.getElementById('base-result').value = `${result}(${baseToValue})`
+}
+
+function convertTime(){
+    const input=parseInt(document.getElementById("time-input").value);
+    const unitFrom=document.getElementById("time-units-from").value;
+    let unitTo=document.getElementById("time-units-to").value;
+
+    let result;
+
+    const conversionFactors = {
+        second: 31536000,
+        minute: 525600,
+        hour: 8760,
+        day: 365,
+        week: 48,
+        year: 1,
+    };
+
+    // Convert input to hours first
+    const valueInyear = input / conversionFactors[unitFrom];
+
+    // Convert from hours to the target unit
+    result = valueInyear * conversionFactors[unitTo];
+
+    if(result==1)
+        unitTo=unitTo+'s';
+    else
+        unitTo=unitTo+'s';
+
+    document.getElementById('time-result').value = `${result.toFixed(2)} ${unitTo}`;
 }
