@@ -20,7 +20,11 @@
     border: 1px solid var(--input-border);
     border-radius: 5px;
     background-color: var(--input-bg);
-    color: var(--input-text);
+    /*color: var(--input-text);*/
+}
+
+.result{
+    color: rgba(244, 8, 8, 0.76);
 }
 
 .unit-converter button {
