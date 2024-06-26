@@ -81,7 +81,6 @@ function handleClick(event) {
     // Retrieve the key value from the clicked <li> element
     const keyValue = event.target.getAttribute('key');
     document.getElementById('display').value = history[keyValue].split(' =')[0];
-    console.log("It works, Index = "+keyValue);
     // You can also return the key value or use it as needed
     return keyValue;
 }
