@@ -1,8 +1,8 @@
-let isDegree = true;
+//let isDegree = true;
 let memoryValue = 0;
 
 function setDegreeMode() {
-    isDegree = true;
+    //isDegree = true;
     document.getElementById('deg-btn').classList.add('active-btn');
     document.getElementById('deg-btn').classList.remove('inactive-btn');
     document.getElementById('deg-btn').value = 'true';
@@ -12,7 +12,7 @@ function setDegreeMode() {
 }
 
 function setRadianMode() {
-    isDegree = false;
+    //isDegree = false;
     document.getElementById('rad-btn').classList.add('active-btn');
     document.getElementById('rad-btn').classList.remove('inactive-btn');
     document.getElementById('rad-btn').value = 'true';
@@ -37,9 +37,16 @@ function deleteLast() {
 
 function appendCharacter(char) {
     const display = document.getElementById('display');
-    const formattedDisplay = document.getElementById('formatted-display');
+    //const formattedDisplay = document.getElementById('formatted-display');
     display.value += char;
-    formattedDisplay.innerHTML += formatCharacter(char);
+    //formattedDisplay.innerHTML += formatCharacter(char);
+}
+
+function appendOperationCharacter(char){
+    const display = document.getElementById('display');
+    const formattedDisplay = document.getElementById('formatted-display');
+    formattedDisplay.innerHTML +=display.value;
+    display.value = char;
 }
 
 function formatCharacter(char) {
@@ -60,8 +67,10 @@ function formatCharacter(char) {
 
 function calculateResult() {
     let display = document.getElementById('display');
+    const formattedDisplay = document.getElementById('formatted-display');
+    formattedDisplay.innerHTML +=display.value;
     if(document.getElementById('rad-btn').value === 'true'){
-        let expression2 = display.value
+        let expression2 = formattedDisplay.innerHTML
             .replace(/π/g, 'Math.PI')
             .replace(/\^/g,'**')
             .replace(/sin\(/g, 'Math.sin\(')
@@ -81,7 +90,7 @@ function calculateResult() {
             console.log(expression2);
     
     } else {
-        let expression2 = display.value
+        let expression2 = formattedDisplay.innerHTML
             .replace(/π/g, 'Math.PI')
             .replace(/√\(/g, 'Math.sqrt\(')
             .replace(/log\(/g, 'Math.log\(')
