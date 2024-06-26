@@ -1,3 +1,5 @@
+const tag = ["standard", "standard"];
+
 document.getElementById('menu-toggle').addEventListener('click', function() {
     var menu = document.getElementById('menu');
     if (menu.style.display === 'block') {
@@ -32,6 +34,8 @@ document.getElementById('integration-btn').addEventListener('click', () => loadC
 document.getElementById('geometry-btn').addEventListener('click', () => loadCalculator('geometry'));
 
 function loadCalculator(type) {
+    tag[0] = tag[1];
+    tag[1] = type;
     fetch(`components/${type}.html`)
         .then(response => response.text())
         .then(html => {
@@ -47,6 +51,7 @@ function loadCalculator(type) {
             } else {
                 loadJS([`js/components/${type}.js`]);
             }
+            removeTags();
         })
         .catch(err => console.error('Failed to load calculator: ', err));
 }
@@ -137,6 +142,52 @@ document.addEventListener('keydown', function(event) {
         }
     }
 });
+
+//remove unnecessary link & script tags
+function removeTags() {
+    // Select all link elements
+    const linkTags = document.querySelectorAll('link');
+    const scriptTags = document.querySelectorAll('script');
+    if(tag[0] != tag[1]){
+    // Loop through the link tags
+        linkTags.forEach(linkTag => {
+            if (linkTag.getAttribute('href') === `css/components/${tag[0]}.css`) {
+                linkTag.parentNode.removeChild(linkTag);
+            }    
+        });
+        scriptTags.forEach(scriptTag => {
+            if (scriptTag.getAttribute('src') === `js/components/${tag[0]}.js`) {
+                scriptTag.parentNode.removeChild(scriptTag);
+            }
+        });
+    }
+    let linkCount = 0;
+    let scriptCount = 0;
+    linkTags.forEach(linkTag => {
+        if (linkTag.getAttribute('href') === `css/components/${tag[1]}.css`) {
+            linkCount++;
+        }
+        if(linkCount > 1){
+            linkTag.parentNode.removeChild(linkTag);
+        }
+    });
+    scriptTags.forEach(scriptTag => {
+        if (scriptTag.getAttribute('src') === `js/components/${tag[1]}.js`) {
+            scriptCount++;
+        }
+        if(scriptCount > 1){
+            scriptTag.parentNode.removeChild(scriptTag);
+        }
+        if (tag[1] != 'derivation' ||'integration' || 'geometry'){
+            if (scriptTag.getAttribute('src') === 'https://cdn.jsdelivr.net/npm/mathjs@10.0.0/lib/browser/math.min.js') {
+                scriptTag.parentNode.removeChild(scriptTag);
+            }
+            if (scriptTag.getAttribute('src') === 'https://cdn.plot.ly/plotly-latest.min.js') {
+                scriptTag.parentNode.removeChild(scriptTag);
+            }
+        }
+    });
+}
 
 //Need to Check in the Windows Environment
 
