@@ -1,25 +1,31 @@
-let isDegree = true;
+//let isDegree = true;
 let memoryValue = 0;
 
 function setDegreeMode() {
-    isDegree = true;
+    //isDegree = true;
     document.getElementById('deg-btn').classList.add('active-btn');
     document.getElementById('deg-btn').classList.remove('inactive-btn');
+    document.getElementById('deg-btn').value = 'true';
     document.getElementById('rad-btn').classList.remove('active-btn');
     document.getElementById('rad-btn').classList.add('inactive-btn');
+    document.getElementById('rad-btn').value = 'false';
 }
 
 function setRadianMode() {
-    isDegree = false;
+    //isDegree = false;
     document.getElementById('rad-btn').classList.add('active-btn');
     document.getElementById('rad-btn').classList.remove('inactive-btn');
+    document.getElementById('rad-btn').value = 'true';
     document.getElementById('deg-btn').classList.remove('active-btn');
     document.getElementById('deg-btn').classList.add('inactive-btn');
+    document.getElementById('deg-btn').value = 'false';
 }
 
 function clearDisplay() {
-    document.getElementById('display').value = '';
-    document.getElementById('formatted-display').innerHTML = '';
+    if(document.getElementById('display').value === '')
+        document.getElementById('formatted-display').innerHTML = '';
+    else
+        document.getElementById('display').value = ''; 
 }
 
 function deleteLast() {
@@ -31,9 +37,16 @@ function deleteLast() {
 
 function appendCharacter(char) {
     const display = document.getElementById('display');
-    const formattedDisplay = document.getElementById('formatted-display');
+    //const formattedDisplay = document.getElementById('formatted-display');
     display.value += char;
-    formattedDisplay.innerHTML += formatCharacter(char);
+    //formattedDisplay.innerHTML += formatCharacter(char);
+}
+
+function appendOperationCharacter(char){
+    const display = document.getElementById('display');
+    const formattedDisplay = document.getElementById('formatted-display');
+    formattedDisplay.innerHTML +=display.value;
+    display.value = char;
 }
 
 function formatCharacter(char) {
@@ -53,22 +66,50 @@ function formatCharacter(char) {
 }
 
 function calculateResult() {
-    const display = document.getElementById('display');
-    let expression = display.value;
-
-    try {
-        if (isDegree) {
-            expression = expression.replace(/Math.(sin|cos|tan|asin|acos|atan)\(/g, match => {
-                return `${match.slice(0, -1)}(Math.PI/180*`;
-            });
-        }
-        expression = expression.replace(/\^/g, '**');
-        const result = eval(expression);
-        display.value = result;
-        updateHistory(expression + " = " + result);
-    } catch (e) {
-        display.value = 'Error';
-    }
+    let display = document.getElementById('display');
+    const formattedDisplay = document.getElementById('formatted-display');
+    formattedDisplay.innerHTML +=display.value;
+    if(document.getElementById('rad-btn').value === 'true'){
+        let expression2 = formattedDisplay.innerHTML
+            .replace(/π/g, 'Math.PI')
+            .replace(/\^/g,'**')
+            .replace(/sin\(/g, 'Math.sin\(')
+            .replace(/cos\(/g, 'Math.cos\(')
+            .replace(/tan\(/g, 'Math.tan\(')
+            .replace(/√\(/g, 'Math.sqrt\(')
+            .replace(/log\(/g, 'Math.log\(')
+            .replace(/exp\(/g,'Math.exp\(')
+            .replace(/'asin'\(/g, 'Math.asin\(')
+            .replace(/'acos'\(/g, 'Math.acos\(')
+            .replace(/'atan'\(/g, 'Math.atan\(');
+            try {
+                display.value = eval(expression2);
+            } catch (error) {
+                display.value = 'Error';
+            }
+            console.log(expression2);
+    
+    } else {
+        let expression2 = formattedDisplay.innerHTML
+            .replace(/π/g, 'Math.PI')
+            .replace(/√\(/g, 'Math.sqrt\(')
+            .replace(/log\(/g, 'Math.log\(')
+            .replace(/exp\(/g,'Math.exp\(')
+            .replace(/\^/g,'**')
+            .replace(/sin\(/g, 'Math.sin\((Math.PI/180)*')
+            .replace(/cos\(/g, 'Math.cos\((Math.PI/180)*')
+            .replace(/tan\(/g, 'Math.tan\((Math.PI/180)*')
+            .replace(/'asin'\(/g, 'Math.asin\(')
+            .replace(/'acos'\(/g, 'Math.acos\(')
+            .replace(/'atan'\(/g, 'Math.atan\(');
+            try {
+                display.value = eval(expression2);
+            } catch (error) {
+                display.value = 'Error';
+            }
+            console.log(expression2);
+    } 
+        
 }
 
 function calculateFraction() {
@@ -103,14 +144,21 @@ function calculatePercentage() {
     }
 }
 
-function togglePlusMinus() {
-    const display = document.getElementById('display');
-    const value = parseFloat(display.value);
-    if (!isNaN(value)) {
-        display.value = -value;
-    }
+function togglePlusMinus(){
+    let dis = document.getElementById('display');
+    let regex = /[+\-*\/]/;
+    if(dis.value === '')
+        dis.value = '-';
+    else if (dis.value.startsWith("-(") && dis.value.endsWith(")")) {
+        dis.value = dis.value.slice(2, -1); // Remove "-(" from the beginning and ")" from the end
+      }
+    else if(dis.value.slice(0,1) === '-')
+        dis.value = dis.value.slice(1);
+    else if(regex.test(dis.value))
+        dis.value = '-(' + dis.value + ')';
+    else
+        dis.value = '-' + dis.value;
 }
-
 function memoryClear() {
     memoryValue = 0;
 }
