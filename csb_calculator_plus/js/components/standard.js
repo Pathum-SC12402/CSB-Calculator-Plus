@@ -1,5 +1,4 @@
-const history = new Array();
-
+var history = new Array();
 
 function clearDisplay() {
     document.getElementById('display').value = '';
