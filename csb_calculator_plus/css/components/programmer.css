@@ -19,6 +19,13 @@
     flex: 1; /* Allow the h2 to take up available space */
 }
 
+.title2{
+    grid-column: span 4;
+    text-align: center;
+    margin-top:15px;
+    flex: 1; /* Allow the h2 to take up available space */
+}
+
 #base-select {
     width: 100px;
     padding: 8px 10px;

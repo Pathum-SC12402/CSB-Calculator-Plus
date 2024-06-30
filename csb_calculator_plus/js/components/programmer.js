@@ -3,6 +3,22 @@ document.getElementById('base-select').addEventListener('change', function() {
     clearDisplay();
 });
 
+function handleResize() {
+    const header1 = document.getElementById('title1');
+    const header2 = document.getElementById('title2');
+    if (window.innerWidth < 650) {
+        header1.style.display = 'none';
+        header2.style.display = 'block';
+    } else {
+        header1.style.display = 'block';
+        header2.style.display = 'none';
+    }
+}
+
+window.addEventListener('resize', handleResize);
+
+handleResize();
+
 function updateButtons(base) {
     const allButtons = document.querySelectorAll('.calculator button');
     allButtons.forEach(btn => {
