@@ -1,3 +1,14 @@
+.result{
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    background-color: var(--input-bg);
+    color:rgb(158, 29, 29);
+}
+
 .unit-converter {
     display: flex;
     flex-direction: column;
@@ -12,7 +23,7 @@
     transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme change */
 }
 
-.unit-converter select, .unit-converter input, .unit-converter button {
+.unit-converter select, .inputs, .unit-converter button {
     width: calc(100% - 20px);
     padding: 10px;
     font-size: 16px;
@@ -20,11 +31,7 @@
     border: 1px solid var(--input-border);
     border-radius: 5px;
     background-color: var(--input-bg);
-    /*color: var(--input-text);*/
-}
-
-.result{
-    color: rgba(244, 8, 8, 0.76);
+    color: var(--input-text);
 }
 
 .unit-converter button {
