@@ -1,4 +1,4 @@
-const history = new Array();
+//const history = new Array();
 
 function clearDisplay() {
     document.getElementById('display').value = '';
@@ -24,11 +24,11 @@ function calculateResult() {
     }else{
         try {
             const result = eval(display.value);
-            if (history.length >= 10) {
+            /* if (history.length >= 10) {
                 history.shift();
-            }
+            } */
             if(display.value != result){
-                updateHistory(`${display.value} = ${result}`);
+                //updateHistory(`${display.value} = ${result}`);
             }
             display.value = result;
         } catch (e) {
@@ -52,7 +52,7 @@ function togglePlusMinus() {
 }
 
 //show history of calculations
-function toggleHistory() {
+/* function toggleHistory() {
     const historyElement = document.getElementById('history');
     if (historyElement.style.display === 'block') {
         historyElement.style.display = 'none';
@@ -61,7 +61,7 @@ function toggleHistory() {
     }
 }
 
-function updateHistory(element){
+/* function updateHistory(element){
     const historyList = document.getElementById('history-list');
     if(element != history[history.length - 1]){
         history.push(element);
@@ -74,7 +74,7 @@ function updateHistory(element){
             historyList.appendChild(listItem);
         });
     }    
-}
+} 
 
 function handleClick(event) {
     // Retrieve the key value from the clicked <li> element
@@ -84,4 +84,4 @@ function handleClick(event) {
     return keyValue;
 }
 
-document.getElementById('history-toggle').addEventListener('click', toggleHistory);
+document.getElementById('history-toggle').addEventListener('click', toggleHistory) */;
