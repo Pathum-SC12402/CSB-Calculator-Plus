@@ -5,15 +5,14 @@
     gap: 10px;
 }
 
-.inputs,button {
+.integration-calculator input, .integration-calculator button {
     width: 100%;
     padding: 10px;
     font-size: 16px;
     margin-bottom: 10px;
 }
 
-button {
-    width: 100%;
+.integration-calculator button {
     cursor: pointer;
     background-color: #123456;
     color: white;
@@ -21,16 +20,6 @@ button {
     border-radius: 5px;
 }
 
-button:hover {
+.integration-calculator button:hover {
     background-color: #0a1931;
-}
-
-.limit{
-    display: inline-block; 
-    width: 48%; 
-    font-size: 16px; 
-    padding: 10px; 
-    margin-right: 0.8%;
-    margin-left: 0.8%;
-    margin-bottom: 10px;
 }

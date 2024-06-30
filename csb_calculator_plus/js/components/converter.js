@@ -11,7 +11,7 @@ function loadConverter(defaultType = null) {
         case 'length':
             fieldsContainer.innerHTML = `
                 <center><h3>Length Converter</h3></center><br>
-                <input type="number" id="length-input" placeholder="Enter value">
+                <input type="number" id="length-input" class="inputs" placeholder="Enter value">
                 <select id="length-units-from">
                     <option value="m">Meters</option>
                     <option value="km">Kilometers</option>
@@ -34,13 +34,13 @@ function loadConverter(defaultType = null) {
                     <option value="mi">Miles</option>
                 </select>
                 <button onclick="convertLength()">Convert</button>
-                <p>Result: <input class="result" id="length-result" type="text" placeholder="Answer"></p>
+                <p>Result: <input class="result" id="length-result" type="text" placeholder="Answer" readonly></p>
             `;
             break;
         case 'mass':
             fieldsContainer.innerHTML = `
                 <center><h3>Mass or Weight Converter</h3></center><br>
-                <input type="number" id="mass-input" placeholder="Enter value">
+                <input type="number" id="mass-input" class="inputs" placeholder="Enter value">
                 <select id="mass-units-from">
                     <option value="kg">Kilograms</option>
                     <option value="g">Grams</option>
@@ -61,13 +61,13 @@ function loadConverter(defaultType = null) {
                     <option value="t">Metric Tons</option>
                 </select>
                 <button onclick="convertMass()">Convert</button>
-                <p>Result: <input class="result" id="mass-result" type="text" placeholder="Answer"></p>
+                <p>Result: <input class="result" id="mass-result" type="text" placeholder="Answer" readonly></p>
             `;
             break;
         case 'temperature':
             fieldsContainer.innerHTML = `
                 <center><h3>Temperature Converter</h3></center><br>
-                <input type="number" id="temperature-input" placeholder="Enter value">
+                <input type="number" id="temperature-input" class="inputs" placeholder="Enter value">
                 <select id="temperature-units-from">
                     <option value="c">Celsius</option>
                     <option value="f">Fahrenheit</option>
@@ -80,13 +80,13 @@ function loadConverter(defaultType = null) {
                     <option value="k">Kelvin</option>
                 </select>
                 <button onclick="convertTemperature()">Convert</button>
-                <p>Result: <input class="result" id="temperature-result" type="text" placeholder="Answer"></p>
+                <p>Result: <input class="result" id="temperature-result" type="text" placeholder="Answer" readonly></p>
             `;
             break;
         case 'angle':
             fieldsContainer.innerHTML = `
                 <center><h3>Angle Converter</h3></center><br>
-                <input type="number" id="angle-input" placeholder="Enter value">
+                <input type="number" id="angle-input" class="inputs" placeholder="Enter value">
                 <select id="angle-units-from">
                     <option value="deg">Degrees</option>
                     <option value="rad">Radians</option>
@@ -99,13 +99,13 @@ function loadConverter(defaultType = null) {
                     <option value="grad">Gradians</option>
                 </select>
                 <button onclick="convertAngle()">Convert</button>
-                <p>Result: <input class="result" id="angle-result" type="text" placeholder="Answer"></p>
+                <p>Result: <input class="result" id="angle-result" type="text" placeholder="Answer" readonly></p>
             `;
             break;
         case 'base':
             fieldsContainer.innerHTML = `
                 <center><h3>Base Converter</h3></center><br>
-                <input type="text" id="base-input" placeholder="Enter value">
+                <input type="text" id="base-input" class="inputs" placeholder="Enter value">
                 <select id="base-units-from">
                     <option value="bin">Binary</option>
                     <option value="oct">Octal</option>
@@ -113,7 +113,7 @@ function loadConverter(defaultType = null) {
                     <option value="hex">Hexadecimal</option>
                     <option value="custom">Custom Base</option>
                 </select>
-                <input type="number" id="custom-base-from" placeholder="Enter custom base (if selected)" style="display:none;" min="2" max="36">
+                <input type="number" id="custom-base-from" class="inputs" placeholder="Enter custom base (if selected)" style="display:none;" min="2" max="36">
                 <div class="arrow">⬇</div>
                 <select id="base-units-to">
                     <option value="bin">Binary</option>
@@ -122,9 +122,9 @@ function loadConverter(defaultType = null) {
                     <option value="hex">Hexadecimal</option>
                     <option value="custom">Custom Base</option>
                 </select>
-                <input type="number" id="custom-base-to" placeholder="Enter custom base (if selected)" style="display:none;" min="2" max="36">
+                <input type="number" id="custom-base-to" class="inputs" placeholder="Enter custom base (if selected)" style="display:none;" min="2" max="36">
                 <button onclick="convertBase()">Convert</button>
-                <p>Result: <input class="result" id="base-result" type="text" placeholder="Answer"></p>
+                <p>Result: <input class="result" id="base-result" type="text" placeholder="Answer" readonly></p>
             `;
             document.getElementById('base-units-from').addEventListener('change', handleCustomBase);
             document.getElementById('base-units-to').addEventListener('change', handleCustomBase);
@@ -132,7 +132,7 @@ function loadConverter(defaultType = null) {
         case 'time':
             fieldsContainer.innerHTML = `
                 <center><h3>Time Converter</h3></center><br>
-                <input type="number" id="time-input" placeholder="Enter value">
+                <input type="number" id="time-input" class="inputs" placeholder="Enter value">
                 <select id="time-units-from">
                     <option value="second">Seconds</option>
                     <option value="minute">Minutes</option>
@@ -151,7 +151,7 @@ function loadConverter(defaultType = null) {
                     <option value="year">Years</option>
                 </select>
                 <button onclick="convertTime()">Convert</button>
-                <p>Result: <input class="result" id="time-result" type="text" placeholder="Answer"></p>
+                <p>Result: <input class="result" id="time-result" type="text" placeholder="Answer" readonly></p>
             `;
             break;
         default:
@@ -422,11 +422,6 @@ function convertTime(){
 
     // Convert from hours to the target unit
     result = valueInyear * conversionFactors[unitTo];
-
-    if(result==1)
-        unitTo=unitTo+'s';
-    else
-        unitTo=unitTo+'s';
 
     document.getElementById('time-result').value = `${result.toFixed(2)} ${unitTo}`;
 }
