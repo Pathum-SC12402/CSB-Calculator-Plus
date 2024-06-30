@@ -35,7 +35,7 @@
     background-color: var(--button-hover-bg);
 }
 
-#plot {
+.derivative-calculator plot {
     width: 100%;
     height: 400px;
 }

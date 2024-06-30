@@ -55,8 +55,7 @@ function plotGraph(functionInput, derivative, baseInput) {
             color: getComputedStyle(document.body).getPropertyValue('--converter-text')
         }
     };
-
-    Plotly.newPlot('plot', [trace1, trace2], layout);
+        Plotly.newPlot('plot', [trace1, trace2], layout);
 }
 
 function updatePlotTheme() {
@@ -84,3 +83,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new MutationObserver(updatePlotTheme);
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 });
+
+function handleResize() {
+    const plot = document.getElementById('plot');
+    if (window.innerWidth < 840) {
+        plot.style.display = 'none';
+    } else {
+        plot.style.display = 'block';
+    }
+}
+
+window.addEventListener('resize', handleResize);
+
+handleResize();
+      
