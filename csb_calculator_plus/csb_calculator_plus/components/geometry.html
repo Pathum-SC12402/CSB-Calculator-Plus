@@ -1,0 +1,30 @@
+<div class="geometry-calculator">
+    <h2>Geometry Calculator</h2><br>
+    <form id="geometry-form">
+        <select id="shape-select">
+            <option value="" disabled selected>Select Shape</option>
+            <option value="line">Line</option>
+            <option value="rectangle">Rectangle</option>
+            <option value="circle">Circle</option>
+            <option value="triangle">Triangle</option>
+            <option value="sphere">Sphere</option>
+            <option value="cube">Cube</option>
+            <option value="cylinder">Cylinder</option>
+            <!-- Add more shapes as needed -->
+        </select>
+        <select id="parameter-select" disabled>
+            <option value="" disabled selected>Select Parameter</option>
+            <!-- Options will be populated dynamically based on selected shape -->
+        </select>
+        <div id="input-fields"></div>
+        <button type="submit">Calculate</button>
+    </form>
+    <p class="result" id="result"></p>
+    <div class="canvas-container">
+        <canvas id="shape-canvas"></canvas>
+        <div class="under-construction">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>This Calculator is Under Development</p>
+        </div>
+    </div>
+</div>
