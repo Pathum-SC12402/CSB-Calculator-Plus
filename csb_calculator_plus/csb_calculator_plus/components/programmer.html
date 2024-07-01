@@ -1,0 +1,47 @@
+<div class="calculator">
+    <div class="calculator-header">
+        <select id="base-select">
+            <option value="2">Base 2</option>
+            <option value="8">Base 8</option>
+            <option value="10" selected>Base 10</option>
+            <option value="16">Base 16</option>
+        </select>
+        <h2 id="title1">Programmer Calculator</h2>
+        <span id="history-toggle" class="history-icon">🕒🇩</span>
+    </div>
+    <div id="title2" class="title2">
+        <h2>Programmer Calculator</h2>
+    </div>
+    <input type="text" id="display" disabled>
+    <button data-value="CE" onclick="clearDisplay()">CE</button>
+    <button data-value="DEL" onclick="deleteLast()">DEL</button>
+    <button data-value="%" onclick="calculatePercentage()">%</button>
+    <button data-value="/" onclick="appendCharacter('/')">/</button>
+    <button data-value="7" onclick="appendCharacter('7')">7</button>
+    <button data-value="8" onclick="appendCharacter('8')">8</button>
+    <button data-value="9" onclick="appendCharacter('9')">9</button>
+    <button data-value="*" onclick="appendCharacter('*')">*</button>
+    <button data-value="4" onclick="appendCharacter('4')">4</button>
+    <button data-value="5" onclick="appendCharacter('5')">5</button>
+    <button data-value="6" onclick="appendCharacter('6')">6</button>
+    <button data-value="-" onclick="appendCharacter('-')">-</button>
+    <button data-value="1" onclick="appendCharacter('1')">1</button>
+    <button data-value="2" onclick="appendCharacter('2')">2</button>
+    <button data-value="3" onclick="appendCharacter('3')">3</button>
+    <button data-value="+" onclick="appendCharacter('+')">+</button>
+    <button data-value="0" onclick="appendCharacter('0')">0</button>
+    <button data-value="." onclick="appendCharacter('.')">.</button>
+    <button data-value="+/-" onclick="togglePlusMinus()">+/-</button>
+    <button data-value="=" onclick="calculateResult()">=</button>
+    <!-- Hexadecimal buttons -->
+    <button data-value="A" onclick="appendCharacter('A')">A</button>
+    <button data-value="B" onclick="appendCharacter('B')">B</button>
+    <button data-value="C" onclick="appendCharacter('C')">C</button>
+    <button data-value="D" onclick="appendCharacter('D')">D</button>
+    <button data-value="E" onclick="appendCharacter('E')">E</button>
+    <button data-value="F" onclick="appendCharacter('F')">F</button>
+</div>
+<div id="history" class="history">
+    <h3>Answers' Decimal History</h3>
+    <ul id="history-list"></ul>
+</div>
